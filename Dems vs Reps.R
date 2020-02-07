@@ -247,14 +247,33 @@ finaldf = rbind.data.frame(reps,dems)
 
 view(finaldf)
 
+#get some cursory summary information
+summary(finaldf)
+
 #run the t-test to test the null hypothesis that democratic presidents have reduced poverty levels more than republicans
 t.test(poverty~group, data=finaldf, var.equal = TRUE, alternative="greater")
+
+#create a box plot to support the the test results
+boxplot(poverty~group,data=finaldf, main="Change in Poverty Level",
+        xlab="Political Party", ylab="% Change in Poverty")
 
 #run the t-test to test the null hypothesis that democratic presidents have reduced unemployment level more than republicans
 t.test(employment~group, data=finaldf, var.equal = TRUE, alternative="greater")
 
+#create a box plot to support the the test results
+boxplot(employment~group,data=finaldf, main="Change in Unemployment Rate",
+        xlab="Political Party", ylab="% Change in Unemployment")
+
 #run the t-test to test the null hypothesis that democratic presidents increase the gdp less than republicans
 t.test(gdp~group, data=finaldf, var.equal = TRUE, alternative="greater")
 
+#create a box plot to support the the test results
+boxplot(gdp~group,data=finaldf, main="Change in GDP",
+        xlab="Political Party", ylab="% Change in GDP")
+
 #run the t-test to test the null hypothesis that democratic presidents had lower per capita income than republicans
 t.test(`per capita`~group, data=finaldf, var.equal = TRUE, alternative="greater")
+
+#create a box plot to support the the test results
+boxplot(`per capita`~group,data=finaldf, main="Change in Real Per Capita Income",
+        xlab="Political Party", ylab="% Change in Income")
